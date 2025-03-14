@@ -1193,7 +1193,7 @@ H5SeuratToH5AD <- function(
     Transpose(
       x = source[[H5Path('reductions', reduc, 'cell.embeddings')]],
       dest = obsm,
-      dname = paste0('X_', reduc),
+      dname = reduc,
       verbose = FALSE
     )
     if (reductions[[reduc]]['feature.loadings']) {
@@ -1239,7 +1239,7 @@ H5SeuratToH5AD <- function(
     Transpose(
       x = source[[H5Path('reductions', reduc, 'cell.embeddings')]],
       dest = obsm,
-      dname = paste0('X_', reduc),
+      dname = reduc,
       verbose = FALSE
     )
   }
