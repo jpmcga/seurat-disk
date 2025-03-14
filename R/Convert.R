@@ -1190,10 +1190,15 @@ H5SeuratToH5AD <- function(
     if (verbose) {
       message("Adding dimensional reduction information for ", reduc)
     }
+    if (reduc == "spatial") {
+      new_dname <- "spatial"
+    } else {
+      new_dname <- paste0("X_", reduc)
+    }
     Transpose(
       x = source[[H5Path('reductions', reduc, 'cell.embeddings')]],
       dest = obsm,
-      dname = reduc,
+      dname = new_dname,
       verbose = FALSE
     )
     if (reductions[[reduc]]['feature.loadings']) {
@@ -1236,10 +1241,15 @@ H5SeuratToH5AD <- function(
     } else if (verbose) {
       message("Adding dimensional reduction information for ", reduc, " (global)")
     }
+    if (reduc == "spatial") {
+      new_dname <- "spatial"
+    } else {
+      new_dname <- paste0("X_", reduc)
+    }
     Transpose(
       x = source[[H5Path('reductions', reduc, 'cell.embeddings')]],
       dest = obsm,
-      dname = reduc,
+      dname = new_dname,
       verbose = FALSE
     )
   }
